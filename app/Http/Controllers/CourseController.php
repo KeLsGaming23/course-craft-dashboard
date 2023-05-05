@@ -27,4 +27,9 @@ class CourseController extends Controller
             'course_description' => $request->course_description
         ], 201);
     }
+    public function GetCourseData(Request $request){
+        $course_data = Course::all();
+        $jsonData = $course_data->toJson();
+        return response()->json($jsonData);
+    }
 }
