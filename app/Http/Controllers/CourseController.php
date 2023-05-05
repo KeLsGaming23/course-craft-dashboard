@@ -29,7 +29,6 @@ class CourseController extends Controller
     }
     public function GetCourseData(Request $request){
         $course_data = Course::all();
-        $jsonData = $course_data->toJson();
-        return response()->json($jsonData);
+        return response()->json($course_data);
     }
 }
