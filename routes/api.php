@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ForgetController;
 use App\Http\Controllers\ResetController;
+use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,5 @@ Route::get('/user', [UserController::class, 'User'])->middleware('auth:api');
 Route::post('/create/course', [CourseController::class, 'CreateCourse'])->middleware('auth:api');
 //Get Course Route
 Route::get('/get/course', [CourseController::class, 'GetCourseData']);
+//Create Topic Route
+Route::post('/create/topic', [TopicController::class, 'Store']);
