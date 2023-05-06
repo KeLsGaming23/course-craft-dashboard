@@ -24,4 +24,4 @@ Route::get('/user', [UserController::class, 'User'])->middleware('auth:api');
 //Create New Course Route
 Route::post('/create/course', [CourseController::class, 'CreateCourse'])->middleware('auth:api');
 //Get Course Route
-Route::get('/get/course', [CourseController::class, 'GetCourseData'])->middleware('auth:api');
+Route::get('/get/course', [CourseController::class, 'GetCourseData']);
