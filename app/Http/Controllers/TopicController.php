@@ -22,4 +22,15 @@ class TopicController extends Controller
             'topic_video' => $request->topic_video
         ], 201);
     }
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $topics = Topic::search($query);
+
+        return response()->json([
+            'data' => $topics,
+            'query' => $query,
+        ], 200);
+    }
 }

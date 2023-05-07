@@ -17,4 +17,10 @@ class Topic extends Model
     {
         return $this->belongsTo(Course::class);
     }
+    public static function search($query)
+    {
+        return static::where('topic_title', 'LIKE', '%' . $query . '%')
+            ->orWhere('topic_video', 'LIKE', '%' . $query . '%')
+            ->get();
+    }
 }
