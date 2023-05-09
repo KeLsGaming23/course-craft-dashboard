@@ -22,6 +22,13 @@ class TopicController extends Controller
             'topic_video' => $request->topic_video
         ], 201);
     }
+    public function getTopicsByCourseId(Request $request, $course_id)
+    {
+        $topics = Topic::where('course_id', $course_id)->get();
+
+        return response()->json($topics, 200);
+    }
+
     public function search(Request $request)
     {
         $query = $request->input('query');

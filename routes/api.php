@@ -29,6 +29,8 @@ Route::post('/create/course', [CourseController::class, 'CreateCourse'])->middle
 Route::get('/get/course', [CourseController::class, 'GetCourseData']);
 //Create Topic Route
 Route::post('/create/topic', [TopicController::class, 'Store']);
+//Create Topic Route
+Route::get('topics/course/{course_id}', [TopicController::class, 'getTopicsByCourseId']);
 //SearhREsult Topic Route
 Route::get('/search', [TopicController::class, 'search'])->name('topic.search');
 
