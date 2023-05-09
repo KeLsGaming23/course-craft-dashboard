@@ -1,0 +1,5 @@
+to create a new table
+->php artisan make:migration 
+
+to create an controller
+->php artisan make: controller + controller name

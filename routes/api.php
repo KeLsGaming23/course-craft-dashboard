@@ -8,6 +8,7 @@ use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EnrolledCourseController;
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
@@ -30,3 +31,8 @@ Route::get('/get/course', [CourseController::class, 'GetCourseData']);
 Route::post('/create/topic', [TopicController::class, 'Store']);
 //SearhREsult Topic Route
 Route::get('/search', [TopicController::class, 'search'])->name('topic.search');
+
+// Student Enrolled Course Route
+Route::post('/enrollCourse/{course_id}', [EnrolledCourseController::class, 'enrollCourse'])->middleware('auth:api');
+
+Route::get('/enrolledCourses', [EnrolledCourseController::class, 'getEnrolledCourses'])->middleware('auth:api');
