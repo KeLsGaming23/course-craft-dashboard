@@ -20,13 +20,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::post('/customLogout', function () {
+    Auth::logout();
+    return redirect('http://localhost:3000/ErrorPage');
+})->name('customLogout');
 Route::get('/dashboard', function () {
     $users = User::all();
     $courses = Course::all();
     $topics = Topic::all();
     return view('dashboard', compact('users', 'courses', 'topics'));
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'role:0'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
