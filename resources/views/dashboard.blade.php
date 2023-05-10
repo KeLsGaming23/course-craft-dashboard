@@ -182,22 +182,29 @@
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-3">
                         <div class="h-100 bg-secondary rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
                                 <div class="position-relative">
-                                    <img class="rounded-circle mx-auto my-auto" src="{{ asset('img/user.jpg') }}" alt="" style="width: 100px; height: 100px;">
-                                    <h1 class="text-center">Michael "Kels-Gaming" Alcoriza</h1>
+                                    <img class="rounded-circle mx-auto my-auto" src="{{ asset('img/lawrence.jpg') }}" alt="" style="width: 100px; height: 100px;">
+                                    <h1 class="text-center">Lawrence Prieto</h1>
                                     <h4 class="text-center">Co Developer</h4>
                                     <!-- <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div> -->
                                     <!-- Social Media Link -->
-                                    <h4 class="text-center">Co Developer</h4>
                                     <h1 class="text-center">
-                                        <a class="text-center" href="#"><i class="fa-brands fa-facebook"></i> 
-                                        @mykeLs23</a>
+                                        <a class="text-center" href="https://www.facebook.com/lawrenxceprieto"><i class="fa-brands fa-facebook"></i> 
+                                        @LawrencePrieto</a>
                                     </h1>
                                     <h1 class="text-center">
+                                        <a class="text-center" href="https://twitter.com/KlawrencePrt"><i class="fa-brands fa-twitter"></i> 
+                                        @LawrencePrieto</a>
+                                    </h1>
+                                    <h1 class="text-center">
+                                        <a class="text-center" href="https://www.instagram.com/lawrennxxe"><i class="fa-brands fa-instagram"></i> 
+                                        @LawrencePrieto</a>
+                                    </h1>
+                                    {{-- <h1 class="text-center">
                                         <a class="text-center" href="#"><i class="fa-brands fa-youtube"></i> 
                                         @KelsGaming23</a>
-                                    </h1>
+                                    </h1> --}}
                                 </div>
                             </div>
                         </div>
