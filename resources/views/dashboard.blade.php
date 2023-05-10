@@ -132,7 +132,18 @@
                                     <td>{{ Carbon\Carbon::parse($user->created_at)->diffForHumans() }}</td> 
                                     <td>{{ Carbon\Carbon::parse($user->updated_at)->diffForHumans() }}</td> 
                                     <td>{{ $user->role }}</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td class="d-flex justify-content-around">
+                                        <form action="{{ route('makeAdmin', $user->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-sm btn-primary">Make it Admin</button>
+                                        </form>
+                                        <form action="{{ route('users.update.instructor', $user->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-sm btn-primary">Make it Instructor</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

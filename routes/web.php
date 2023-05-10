@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Models\Course;
 use App\Models\Topic;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +28,15 @@ Route::post('/customLogout', function () {
     Auth::logout();
     return redirect('http://localhost:3000/ErrorPage');
 })->name('customLogout');
+Route::post('/customLogin', function (Request $request) {
+    $credentials = $request->only('email', 'password');
+    if (Auth::attempt($credentials)) {
+        return redirect()->intended('/dashboard');
+    }
+    return back()->withErrors([
+        'email' => 'The provided credentials do not match our records.',
+    ]);
+})->name('customLogin');
 Route::get('/dashboard', function () {
     $users = User::all();
     $courses = Course::all();
@@ -36,5 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::put('/users/{user}', [UserController::class, 'updateRole'])->name('makeAdmin');
+Route::put('/instructor/{user}', [UserController::class, 'makeItInstructor'])->name('users.update.instructor');
 
 require __DIR__.'/auth.php';
