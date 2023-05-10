@@ -188,6 +188,16 @@
                                     <h1 class="text-center">Michael "Kels-Gaming" Alcoriza</h1>
                                     <h4 class="text-center">Co Developer</h4>
                                     <!-- <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div> -->
+                                    <!-- Social Media Link -->
+                                    <h4 class="text-center">Co Developer</h4>
+                                    <h1 class="text-center">
+                                        <a class="text-center" href="#"><i class="fa-brands fa-facebook"></i> 
+                                        @mykeLs23</a>
+                                    </h1>
+                                    <h1 class="text-center">
+                                        <a class="text-center" href="#"><i class="fa-brands fa-youtube"></i> 
+                                        @KelsGaming23</a>
+                                    </h1>
                                 </div>
                             </div>
                         </div>
