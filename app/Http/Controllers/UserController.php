@@ -30,4 +30,13 @@ class UserController extends Controller
         
         return redirect()->back()->with('success', 'User role updated successfully.');
     }
+
+    public function UpdateUser(Request $request, $id)
+    {
+        $update = User::find($id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+        return response()->json($update);
+    }
 }

@@ -23,6 +23,8 @@ Route::post('/forget/password', [ForgetController::class, 'ForgetPassword']);
 Route::post('/reset/password', [ResetController::class, 'ResetPassword']);
 //Current User Route
 Route::get('/user', [UserController::class, 'User'])->middleware('auth:api');
+//Update Current User
+Route::post('/user/{id}', [UserController::class, 'UpdateUser'])->middleware('auth:api');
 //Create New Course Route
 Route::post('/create/course', [CourseController::class, 'CreateCourse'])->middleware('auth:api');
 //Get Course Route
