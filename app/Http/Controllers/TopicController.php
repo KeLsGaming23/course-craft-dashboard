@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Topic;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -39,5 +41,14 @@ class TopicController extends Controller
             'data' => $topics,
             'query' => $query,
         ], 200);
+    }
+    public function AllTopic(){
+        // Eloquent method
+        $allTopics = Topic::paginate(5);
+        $courses = Course::all();
+        $users = User::all();
+        $topics = Topic::all();
+        // $categories = DB::table('categories')->latest()->paginate(5);
+        return view('deleteTopic', compact('allTopics', 'users', 'topics', 'courses'));
     }
 }
