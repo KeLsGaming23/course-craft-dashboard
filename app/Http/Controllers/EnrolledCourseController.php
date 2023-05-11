@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\EnrolledCourse;
@@ -26,9 +27,19 @@ class EnrolledCourseController extends Controller
 
     public function getEnrolledCourses(Request $request) {
         
-        $enrolledCourses = EnrolledCourse::with('course:id,course_title,course_description,course_introduction,course_thumbnail')
+        // $enrolledCourses = EnrolledCourse::with('course:id,course_title,course_description,course_introduction,course_thumbnail')
+        //                                     ->whereBelongsTo(Auth::user())
+        //                                     ->get();
+        // $enrolledCourses = EnrolledCourse::with(['course' => function(Builder $query){
+        //     $query->whereNull('deleted_at');
+        // }])
+        //                                     ->whereBelongsTo(Auth::user())
+        //                                     ->get();
+        $enrolledCourses = EnrolledCourse::has('course')
+                                            ->with('course')
                                             ->whereBelongsTo(Auth::user())
                                             ->get();
+        
         return response()->json($enrolledCourses);
     }
 

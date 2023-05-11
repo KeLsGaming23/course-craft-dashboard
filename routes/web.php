@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\Course;
@@ -43,6 +44,11 @@ Route::get('/dashboard', function () {
     $topics = Topic::all();
     return view('dashboard', compact('users', 'courses', 'topics'));
 })->middleware(['auth', 'verified', 'role:0'])->name('dashboard');
+Route::get('deleteCourse', [CourseController::class, 'AllCourses'])
+    ->middleware(['auth', 'verified', 'role:0'])
+    ->name('deleteCourse');
+Route::get('deletingCourse/{id}', [CourseController::class, 'deleteCourse'])
+    ->middleware(['auth', 'verified', 'role:0']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

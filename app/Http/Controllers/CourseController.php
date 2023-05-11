@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Topic;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,5 +45,17 @@ class CourseController extends Controller
     {
         $course_data = Course::all();
         return response()->json($course_data);
+    }
+    public function AllCourses(){
+        // Eloquent method
+        $courses = Course::paginate(5);
+        $users = User::all();
+        $topics = Topic::all();
+        // $categories = DB::table('categories')->latest()->paginate(5);
+        return view('deleteCourse', compact('courses', 'users', 'topics'));
+    }
+    public function deleteCourse($id){
+        $course = Course::find($id)->delete();
+        return redirect()->back()->with('success', 'Course deleted successfully');
     }
 }
