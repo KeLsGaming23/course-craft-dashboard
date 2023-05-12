@@ -9,6 +9,8 @@ use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EnrolledCourseController;
+use App\Http\Controllers\QuestionController;
+
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
@@ -38,5 +40,13 @@ Route::get('/search', [TopicController::class, 'search'])->name('topic.search');
 
 // Student Enrolled Course Route
 Route::post('/enrollCourse/{course_id}', [EnrolledCourseController::class, 'enrollCourse'])->middleware('auth:api');
-
+// Get Student Erolled course List Route
 Route::get('/enrolledCourses', [EnrolledCourseController::class, 'getEnrolledCourses'])->middleware('auth:api');
+
+// Student Question Route
+// Route::post('/studentQuestion/{course_id}', [QuestionController::class, 'studentQuestion'])->middleware('auth:api');
+
+// Student Question Route
+Route::post('/student/question/{course_id}', [QuestionController::class, 'studentQuestion'])->middleware('auth:api');
+// Get Question Route
+Route::get('/studentQuestions/{course_id}', [QuestionController::class, 'getStudentQuestion'])->middleware('auth:api');
