@@ -204,9 +204,17 @@
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="position-relative">
-                                    <img class="rounded-circle mx-auto my-auto" src="{{ asset('img/user.jpg') }}" alt="" style="width: 100px; height: 100px;">
-                                    <h1 class="text-center">Michael "Kels-Gaming" Alcoriza</h1>
+                                    <img class="rounded-circle mx-auto my-auto" src="{{ asset('img/dev4.jpg') }}" alt="" style="width: 100px; height: 100px;">
+                                    <h1 class="text-center">Jeanson "Eujiko" Acal</h1>
                                     <h4 class="text-center">Co Developer</h4>
+                                    <h1 class="text-center">
+                                        <a class="text-center" href="https://www.facebook.com/jeanson.acal"><i class="fa-brands fa-facebook"></i> 
+                                        @jeanson/Eujiko</a>
+                                    </h1>
+                                    <h1 class="text-center">
+                                        <a class="text-center" href="https://www.instagram.com/jeanson_0/"><i class="fa-brands fa-instagram"></i> 
+                                        @jeanson_0</a>
+                                    </h1>
                                     <!-- <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div> -->
                                 </div>
                             </div>
