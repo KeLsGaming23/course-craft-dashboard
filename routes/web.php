@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
 use App\Models\Course;
 use App\Models\Topic;
@@ -48,6 +49,12 @@ Route::get('deleteCourse', [CourseController::class, 'AllCourses'])
     ->middleware(['auth', 'verified', 'role:0'])
     ->name('deleteCourse');
 Route::get('deletingCourse/{id}', [CourseController::class, 'deleteCourse'])
+    ->middleware(['auth', 'verified', 'role:0']);
+
+Route::get('deleteTopic', [TopicController::class, 'AllTopic'])
+    ->middleware(['auth', 'verified', 'role:0'])
+    ->name('deleteTopic');
+Route::get('deletingTopic/{id}', [TopicController::class, 'deleteTopic'])
     ->middleware(['auth', 'verified', 'role:0']);
 
 Route::middleware('auth')->group(function () {

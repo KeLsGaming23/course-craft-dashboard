@@ -27,8 +27,8 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="{{ 'dashboard' }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="{{ 'deleteCourse' }}" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Delete Course</a>
-                    <a href="{{ 'deleteTopic' }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Delete Topics</a>
+                    <a href="{{ 'deleteCourse' }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Delete Course</a>
+                    <a href="{{ 'deleteTopic' }}" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Delete Topics</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Create Course</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>Create Topic</a>
                 </div>
@@ -113,32 +113,32 @@
                                     </thead>
                                     <tbody>
                                         @php( $i=1 )
-                                        @foreach($courses as $course)
+                                        @foreach($allTopics as $allTopic)
                                         <tr>
-                                            <th scope="row">{{ $courses->firstItem()+$loop->index }}</th>
-                                            <td>{{ $course->course_title }}</td>
-                                            <td>{{ $course->course_description }}</td>
-                                            <td>{{ $course->user->name }}</td>
+                                            <th scope="row">{{ $allTopics->firstItem()+$loop->index }}</th>
+                                            <td>{{ $allTopic->course->course_title }}</td>
+                                            <td>{{ $allTopic->topic_title }}</td>
+                                            <td>{{ $allTopic->topic_video }}</td>
                                             <!-- diffForHumas() is for eloquent -->
                                             <td>
-                                                @if($course->created_at == NULL)
+                                                @if($allTopic->created_at == NULL)
                                                 <span class = 'text-danger'>No Date Set</span>
                                                 @else
                                                 <!-- For eloquent method $category->created_at->diffForHumans()-->
-                                                {{ $course->created_at->diffForHumans() }}
+                                                {{ $allTopic->created_at->diffForHumans() }}
                                                 
                                                 @endif
                                                 
                                             </td> 
                                             <td>
                                                 <a href="" class="btn btn-info">Edit</a>
-                                                <a href="{{ url('deletingCourse/'.$course->id) }}" class="btn btn-danger">Delete</a>
+                                                <a href="" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                {{ $courses->links() }}
+                                {{ $allTopics->links() }}
                             </div>
                         </div>
                     </div>
