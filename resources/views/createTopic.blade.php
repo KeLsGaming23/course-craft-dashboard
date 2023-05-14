@@ -26,10 +26,10 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="{{ 'dashboard' }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="{{ 'deleteCourse' }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Delete Course</a>
-                    <a href="{{ 'deleteTopic' }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Delete Topics</a>
-                    <a href="{{ 'createCourse' }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Create Course</a>
+                    <a href="{{ '/dashboard' }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{ '/deleteCourse' }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Delete Course</a>
+                    <a href="{{ '/deleteTopic' }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Delete Topics</a>
+                    <a href="{{ '/createCourse' }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Create Course</a>
                 </div>
             </nav>
         </div>
@@ -98,24 +98,28 @@
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary rounded h-100 p-4">
                             <h6 class="mb-4">Create Topic</h6>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput"
-                                    placeholder="Course Title">
-                                <label for="floatingInput">Topic Title</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" placeholder="Your Course Description"
-                                    id="floatingTextarea" style="height: 150px;"></textarea>
-                                <label for="floatingTextarea">Topic Description</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput"
-                                    placeholder="https://www.youtube.com/watch?v=ECpc-sI_Ev0">
-                                <label for="floatingInput">Topic Video</label>
-                            </div>
-                            <button type="button" class="btn btn-outline-primary m-2">Submit</button>
+                            <form action="{{ route('create-topic', $course->id) }}" method="POST">
+                                @csrf
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="title" name="topic_title"
+                                        placeholder="Topic Title">
+                                    <label for="title">Topic Title</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" placeholder="Your Topic Description"
+                                        id="description" name="description" style="height: 150px;"></textarea>
+                                    <label for="description">Topic Description</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="video" name="topic_video"
+                                        placeholder="https://www.youtube.com/watch?v=ECpc-sI_Ev0">
+                                    <label for="video">Topic Video</label>
+                                </div>
+                                <button type="submit" class="btn btn-outline-primary m-2">Submit</button>
+                            </form>
                         </div>
                     </div>
+
                 </div>
             </div>
             <!-- Table End -->

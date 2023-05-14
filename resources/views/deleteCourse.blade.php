@@ -30,7 +30,6 @@
                     <a href="{{ 'deleteCourse' }}" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Delete Course</a>
                     <a href="{{ 'deleteTopic' }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Delete Topics</a>
                     <a href="{{ 'createCourse' }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Create Course</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>Create Topic</a>
                 </div>
             </nav>
         </div>
@@ -131,7 +130,7 @@
                                                 
                                             </td> 
                                             <td>
-                                                <a href="{{ url('createTopic') }}" class="btn btn-info">Add Topic</a>
+                                                <a href="{{ route('topics.create', ['course_id' => $course->id]) }}" class="btn btn-info">Add Topic</a>
                                                 <a href="{{ url('deletingCourse/'.$course->id) }}" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>

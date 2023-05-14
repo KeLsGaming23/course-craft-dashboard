@@ -51,10 +51,27 @@ class TopicController extends Controller
         // $categories = DB::table('categories')->latest()->paginate(5);
         return view('deleteTopic', compact('allTopics', 'users', 'topics', 'courses'));
     }
-    public function gotoCreateTopic(){
+    public function gotoCreateTopic($course_id){
+        $course = Course::findOrFail($course_id);
         $courses = Course::all();
         $users = User::all();
         $topics = Topic::all();
-        return view('createTopic', compact('users', 'topics', 'courses'));
+        return view('createTopic', compact('users', 'topics', 'course','courses'));
     }
+    public function create(Request $request, $courseId)
+    {
+        $validatedData = $request->validate([
+            'topic_title' => 'required|string|max:255',
+            'topic_video' => 'nullable|string|max:255',
+        ]);
+
+        $topic = new Topic;
+        $topic->topic_title = $validatedData['topic_title'];
+        $topic->topic_video = $validatedData['topic_video'];
+        $topic->course_id = $courseId;
+        $topic->save();
+
+        return redirect()->back()->with('success', 'Topic created successfully!');
+    }
+
 }

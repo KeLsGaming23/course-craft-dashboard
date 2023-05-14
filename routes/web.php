@@ -63,9 +63,9 @@ Route::get('createCourse', [CourseController::class, 'goToCreateCourse'])
 Route::post('create/Course/', [CourseController::class, 'StoreNewCourse'])
     ->middleware(['auth', 'verified', 'role:0'])
     ->name('store.course');
-Route::get('createTopic', [TopicController::class, 'gotoCreateTopic'])
-    ->middleware(['auth', 'verified', 'role:0'])
-    ->name('createTopic');
+Route::get('/createTopic/{course_id}', [TopicController::class, 'gotoCreateTopic'])->name('topics.create');
+
+Route::post('/topics/create/{courseId}', [TopicController::class, 'create'])->name('create-topic');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
