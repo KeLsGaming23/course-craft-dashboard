@@ -8,7 +8,7 @@
 </head>
 <body>
     Hi<br>
-    Change your password <a href="http://localhost:3000/reset/{{$token}}">Click here</a>
+    Change your password <a href="http://localhost:3000/resetPassword">Click here</a>
     Pin: {{$token}}
 </body>
 </html>

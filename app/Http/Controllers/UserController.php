@@ -39,4 +39,33 @@ class UserController extends Controller
         ]);
         return response()->json($update);
     }
+    public function storeImage(Request $request)
+    {
+        // Validate the request
+        $validatedData = $request->validate([
+            'image' => 'required|image|max:2048', // Maximum image size of 2MB
+        ]);
+
+        // Get the user ID
+        $user_id = Auth::id();
+
+        // Get the uploaded image
+        $image = $request->file('image');
+        $up_location = 'image/profile-image/';
+        // Generate a unique filename for the image
+        $filename = "http://localhost:8000/" . $up_location . 'user-' . $user_id . '-' . time() . '.' . $image->getClientOriginalExtension();
+        // Store the image in the public/images/profile-image directory
+        $path = $image->move('image/profile-image', $filename);
+
+        // Update the user's image column in the database
+        $user = User::findOrFail($user_id);
+        $user->users_img = $filename;
+        $user->save();
+
+        // Return a response
+        return response()->json([
+            'message' => 'Image uploaded successfully',
+            'path' => $filename
+        ], 200);
+    }
 }

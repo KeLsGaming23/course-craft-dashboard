@@ -38,6 +38,8 @@ Route::get('topics/course/{course_id}', [TopicController::class, 'getTopicsByCou
 //SearhREsult Topic Route
 Route::get('/search', [TopicController::class, 'search'])->name('topic.search');
 
+Route::post('/users/image', [UserController::class, 'storeImage'])->middleware('auth:api');
+
 // Student Enrolled Course Route
 Route::post('/enrollCourse/{course_id}', [EnrolledCourseController::class, 'enrollCourse'])->middleware('auth:api');
 // Get Student Erolled course List Route
