@@ -57,6 +57,15 @@ Route::get('deleteTopic', [TopicController::class, 'AllTopic'])
 Route::get('deletingTopic/{id}', [TopicController::class, 'deleteTopic'])
     ->middleware(['auth', 'verified', 'role:0']);
 
+Route::get('createCourse', [CourseController::class, 'goToCreateCourse'])
+    ->middleware(['auth', 'verified', 'role:0'])
+    ->name('createCourse');
+Route::post('create/Course/', [CourseController::class, 'StoreNewCourse'])
+    ->middleware(['auth', 'verified', 'role:0'])
+    ->name('store.course');
+Route::get('createTopic', [TopicController::class, 'gotoCreateTopic'])
+    ->middleware(['auth', 'verified', 'role:0'])
+    ->name('createTopic');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

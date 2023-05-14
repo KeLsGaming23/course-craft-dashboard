@@ -28,9 +28,8 @@
                 <div class="navbar-nav w-100">
                     <a href="{{ 'dashboard' }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="{{ 'deleteCourse' }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Delete Course</a>
-                    <a href="{{ 'deleteTopic' }}" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Delete Topics</a>
+                    <a href="{{ 'deleteTopic' }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Delete Topics</a>
                     <a href="{{ 'createCourse' }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Create Course</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>Create Topic</a>
                 </div>
             </nav>
         </div>
@@ -96,50 +95,25 @@
                         </button>
                     </div>
                     @endif
-                    <div class="col-12">
+                    <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">All Courses Created</h6>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Course Title</th>
-                                            <th scope="col">Course Description</th>
-                                            <th scope="col">Created By:</th>
-                                            <th scope="col">Created At</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php( $i=1 )
-                                        @foreach($allTopics as $allTopic)
-                                        <tr>
-                                            <th scope="row">{{ $allTopics->firstItem()+$loop->index }}</th>
-                                            <td>{{ $allTopic->course->course_title }}</td>
-                                            <td>{{ $allTopic->topic_title }}</td>
-                                            <td>{{ $allTopic->topic_video }}</td>
-                                            <!-- diffForHumas() is for eloquent -->
-                                            <td>
-                                                @if($allTopic->created_at == NULL)
-                                                <span class = 'text-danger'>No Date Set</span>
-                                                @else
-                                                <!-- For eloquent method $category->created_at->diffForHumans()-->
-                                                {{ $allTopic->created_at->diffForHumans() }}
-                                                
-                                                @endif
-                                                
-                                            </td> 
-                                            <td>
-                                                <a href="" class="btn btn-info">Edit</a>
-                                                <a href="" class="btn btn-danger">Delete</a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                {{ $allTopics->links() }}
+                            <h6 class="mb-4">Create Topic</h6>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput"
+                                    placeholder="Course Title">
+                                <label for="floatingInput">Topic Title</label>
                             </div>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" placeholder="Your Course Description"
+                                    id="floatingTextarea" style="height: 150px;"></textarea>
+                                <label for="floatingTextarea">Topic Description</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput"
+                                    placeholder="https://www.youtube.com/watch?v=ECpc-sI_Ev0">
+                                <label for="floatingInput">Topic Video</label>
+                            </div>
+                            <button type="button" class="btn btn-outline-primary m-2">Submit</button>
                         </div>
                     </div>
                 </div>

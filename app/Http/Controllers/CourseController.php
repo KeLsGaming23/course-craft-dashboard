@@ -7,6 +7,7 @@ use App\Models\Topic;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class CourseController extends Controller
 {
@@ -59,4 +60,48 @@ class CourseController extends Controller
         $course = Course::find($id)->delete();
         return redirect()->back()->with('success', 'Course deleted successfully');
     }
+    public function goToCreateCourse(){
+        $courses = Course::all();
+        $users = User::all();
+        $topics = Topic::all();
+        return view('createCourse', compact('courses', 'users', 'topics'));
+    }
+    public function storeNewCourse(Request $request)
+    {
+        $validated = $request->validate([
+            'course_title' => 'required|unique:courses|min:4',
+            'course_description' => 'required|unique:courses|min:4',
+            'course_thumbnail' => 'required|mimes:jpg,jpeg,png',
+            'course_introduction' => 'required',
+        ],
+        [
+            'course_title.required' => 'Please enter Course Title',
+        ]);
+        
+        $course_image = $request->file('course_thumbnail');
+        $image_gen = hexdec(uniqid());
+        $img_ext = strtolower($course_image->getClientOriginalExtension());
+        $image_name = $image_gen . "." . $img_ext;
+        $up_location = 'image/course/';
+        $last_img = "http://localhost:8000/" . $up_location . $image_name;
+        $course_image->move($up_location, $image_name);
+
+        // Parse Youtube Video
+        // $course_link = 'https://www.youtube.com/embed/';
+        // $youtube_link = $request->youtube_link;
+        // $video_id = str_replace('https://www.youtube.com/watch?v=', '', $youtube_link);
+        // $youtube_parse_link = $course_link . $video_id;
+        $user_id = auth()->id();
+        Course::create([
+            'user_id' => $user_id,
+            'course_title' => $request->course_title,
+            'course_thumbnail' => $last_img,
+            'course_description' => $request->course_description,
+            'course_introduction' => $request->course_introduction,
+            'created_at' => Carbon::now()
+        ]);
+        
+        return redirect()->back()->with('success', 'New Course Created');
+    }
+
 }

@@ -51,4 +51,10 @@ class TopicController extends Controller
         // $categories = DB::table('categories')->latest()->paginate(5);
         return view('deleteTopic', compact('allTopics', 'users', 'topics', 'courses'));
     }
+    public function gotoCreateTopic(){
+        $courses = Course::all();
+        $users = User::all();
+        $topics = Topic::all();
+        return view('createTopic', compact('users', 'topics', 'courses'));
+    }
 }
